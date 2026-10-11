@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Log in · Niki</title>
+    <meta name="description" content="Log in to Niki Cloud and manage your hermetic Docker sandbox runners." />
+    <link rel="canonical" href="https://ais-dev-bfvvl67cqopwscdfaahwfk-259500406513.asia-southeast1.run.app/login" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body style="min-height: 100vh; display: flex; flex-direction: column;">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Header (§3.1) -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="/" class="site-logo" aria-label="Niki Home">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="logo-icon">
+              <rect x="5" y="4" width="5" height="24" fill="#fafafa"/>
+              <rect x="10" y="9" width="4" height="5" fill="#fafafa"/>
+              <rect x="14" y="14" width="4" height="5" fill="#ff2fd6"/>
+              <rect x="18" y="19" width="4" height="5" fill="#fafafa"/>
+              <rect x="22" y="4" width="5" height="24" fill="#fafafa"/>
+            </svg>
+          </a>
+        </div>
+        <div class="header-right">
+          <a href="/" class="btn btn--sm btn--ghost">Back to home</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
+      <!-- Centred Card (max-width 360px) (§5.3) -->
+      <div style="width: 100%; max-width: 360px; background: var(--bg); border: 1px solid var(--border-02); padding: 32px 28px;">
+        <h2 id="loginTitle" class="section-h2-pixel" style="font-size: 22px; text-align: center; margin: 0 0 12px 0;">Log in to Niki</h2>
+        <div id="loginSubtitle" style="text-align: center; font-size: 13px; color: var(--muted); margin-bottom: 24px;">
+          Don't have an account? <a href="/login?mode=signup" id="toggleModeLink" style="color: var(--fg); text-decoration: underline;">Sign up</a>
+        </div>
+
+        <!-- Google Auth Button -->
+        <button class="btn btn--ghost btn--full" style="height: 40px; margin-bottom: 20px; gap: 10px;" onclick="handleAuthSuccess()">
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span style="font-family: var(--f-mono); font-size: 13px;">Log in with Google</span>
+        </button>
+
+        <!-- Divider OR -->
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <div style="flex: 1; height: 1px; background: var(--border-01);"></div>
+          <span style="font-family: var(--f-mono); font-size: 12px; color: var(--faint);">OR</span>
+          <div style="flex: 1; height: 1px; background: var(--border-01);"></div>
+        </div>
+
+        <!-- Status message container -->
+        <div id="authStatus" style="display: none; padding: 8px 12px; margin-bottom: 16px; background: rgba(5,241,144,0.1); border: 1px solid var(--emerald); font-family: var(--f-mono); font-size: 12px; color: var(--emerald); text-align: center;"></div>
+
+        <!-- Form fields -->
+        <form onsubmit="event.preventDefault(); handleAuthSuccess();">
+          <div class="form-field">
+            <label class="form-label">EMAIL</label>
+            <input type="email" class="form-input" placeholder="engineer@company.com" required />
+          </div>
+
+          <div class="form-field">
+            <div class="form-label" style="display: flex; justify-content: space-between;">
+              <span>PASSWORD</span>
+              <a href="#" style="color: var(--faint); text-decoration: underline;" onclick="showForgot(); return false;">Forgot?</a>
+            </div>
+            <input type="password" class="form-input" placeholder="••••••••••••" required />
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn btn--solid btn--full" style="margin-top: 12px; height: 40px;">Log in</button>
+        </form>
+
+        <!-- Footer Links -->
+        <div style="border-top: 1px solid var(--border-01); margin-top: 24px; padding-top: 16px; display: flex; justify-content: center; gap: 16px; font-family: var(--f-mono); font-size: 11px; color: var(--faint);">
+          <a href="/terms" style="color: var(--faint);">Terms of Service</a>
+          <span>·</span>
+          <a href="/privacy" style="color: var(--faint);">Privacy Policy</a>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const isSignup = params.get('mode') === 'signup';
+      const redirect = params.get('redirectTo') || '/';
+
+      if (isSignup) {
+        document.getElementById('loginTitle').textContent = 'Sign up for Niki';
+        document.getElementById('loginSubtitle').innerHTML = 'Already have an account? <a href="/login' + (redirect ? '?redirectTo=' + encodeURIComponent(redirect) : '') + '" style="color:var(--fg); text-decoration:underline;">Log in</a>';
+        document.getElementById('submitBtn').textContent = 'Create Account';
+      }
+
+      function showForgot() {
+        const status = document.getElementById('authStatus');
+        status.style.display = 'block';
+        status.textContent = 'Password reset instructions sent to your email.';
+      }
+
+      function handleAuthSuccess() {
+        const status = document.getElementById('authStatus');
+        status.style.display = 'block';
+        status.textContent = isSignup ? 'Account created! Redirecting...' : 'Authenticated successfully! Redirecting...';
+        setTimeout(() => {
+          window.location.href = redirect;
+        }, 600);
+      }
+    </script>
+  </body>
+</html>

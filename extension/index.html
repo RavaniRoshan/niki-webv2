@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>CLI &amp; Daemon · Niki</title>
+    <meta name="description" content="Install the Niki Rust CLI and background daemon to run isolated Docker agents locally or in CI." />
+    <link rel="canonical" href="https://ais-dev-bfvvl67cqopwscdfaahwfk-259500406513.asia-southeast1.run.app/extension" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Header (§3.1) -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="/" class="site-logo" aria-label="Niki Home">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="logo-icon">
+              <rect x="5" y="4" width="5" height="24" fill="#fafafa"/>
+              <rect x="10" y="9" width="4" height="5" fill="#fafafa"/>
+              <rect x="14" y="14" width="4" height="5" fill="#ff2fd6"/>
+              <rect x="18" y="19" width="4" height="5" fill="#fafafa"/>
+              <rect x="22" y="4" width="5" height="24" fill="#fafafa"/>
+            </svg>
+          </a>
+          <nav class="nav-links">
+            <a href="/explore" class="nav-link">Sandboxes</a>
+            <a href="/pricing" class="nav-link">Cloud &amp; Pricing</a>
+            <div class="nav-dropdown-wrapper">
+              <button class="nav-link nav-dropdown-trigger" aria-haspopup="true">
+                Tools
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="nav-dropdown">
+                <a href="/extension" class="dropdown-item active">CLI &amp; Daemon</a>
+                <a href="/analyze" class="dropdown-item">Benchmarks</a>
+                <a href="/canvas" class="dropdown-item">Workflow Canvas</a>
+                <a href="/mcp" class="dropdown-item">MCP Server</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="header-right">
+          <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost">GitHub</a>
+          <a href="/login" class="btn btn--sm btn--solid">Log In</a>
+          <button class="menu-btn" aria-label="Open mobile menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="container" style="padding-top: 50px;">
+      <!-- Hero -->
+      <section style="margin-bottom: 60px;">
+        <h1 class="hero-h1">The hermetic multi-agent engine in your terminal.</h1>
+        <p class="hero-lede" style="max-width: 600px;">
+          One command to plan, code, test, and review inside throwaway Docker sandboxes with zero host access and verified Git pull requests.
+        </p>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <button class="btn btn--solid btn-copy-action" data-copy="cargo install niki-cli" style="gap: 8px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>cargo install niki-cli</span>
+          </button>
+          <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">View on GitHub</a>
+        </div>
+        <div style="margin-top: 16px; font-family: var(--f-mono); font-size: 13px; color: var(--faint);">
+          Rust 1.80+ · macOS, Linux, Windows (WSL2) · Docker / Podman Engine Required
+        </div>
+      </section>
+
+      <!-- 5 Feature Blocks (§5.6) -->
+      <section id="features">
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">Spin up isolated Docker containers in milliseconds.</h2>
+            <div class="feature-body">
+              <p>Niki's Rust engine talks directly to the Docker socket or Podman API. Pre-cached base images mean your agent container is compiling in under 100 milliseconds.</p>
+              <p>Strict cgroup limits prevent runaway memory consumption or CPU starvation.</p>
+            </div>
+          </div>
+          <div class="video-demo-frame">
+            <div class="video-demo-badge">SUB-100MS DAEMON SPAWN</div>
+            <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Docker Micro-Container Spawn Benchmark]</div>
+            <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">Automatic test execution before any Git commit.</h2>
+            <div class="feature-body">
+              <p>Unlike raw LLM assistants that hallucinate syntax and leave broken branches, Niki runs your actual test runner: cargo test, vitest, pytest, or go test.</p>
+              <p>Only when 100% of test assertions pass does Niki stage files and create a clean commit.</p>
+            </div>
+          </div>
+          <div class="video-demo-frame">
+            <div class="video-demo-badge">AUTOMATED TEST RUNNER</div>
+            <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Cargo Test Verification Demo]</div>
+            <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">AST-level security analysis and lifetime linting.</h2>
+            <div class="feature-body">
+              <p>The Reviewer agent inspects AST nodes with ast-grep and clippy to detect anti-patterns, memory leaks, unhandled errors, and insecure dependencies.</p>
+              <p>If any code smell violates your repository policy, the task is rejected and revised internally.</p>
+            </div>
+          </div>
+          <div class="video-demo-frame">
+            <div class="video-demo-badge">AST LINT ENGINE</div>
+            <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[ast-grep &amp; Clippy Static Analysis]</div>
+            <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">Native Model Context Protocol (MCP) daemon for IDEs.</h2>
+            <div class="feature-body">
+              <p>Start niki mcp-daemon to expose your local containers as tools for Claude Desktop, Cursor, or Windsurf.</p>
+              <p>Your external LLMs gain secure execution capabilities without having direct terminal access to your host OS.</p>
+            </div>
+          </div>
+          <div class="video-demo-frame">
+            <div class="video-demo-badge">MCP DAEMON</div>
+            <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Claude &amp; Cursor MCP Connection]</div>
+            <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">Drop-in CI/CD GitHub Actions runner.</h2>
+            <div class="feature-body">
+              <p>Run Niki as an automated bot inside GitHub Actions workflows. Point it at opened issues to generate complete pull requests with automated test passes.</p>
+              <p>Your team reviews pristine diffs instead of writing boilerplate fix code.</p>
+            </div>
+          </div>
+          <div class="video-demo-frame">
+            <div class="video-demo-badge">GITHUB ACTIONS RUNNER</div>
+            <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Automated PR Generation Stream]</div>
+            <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Platform Strip (§5.6) -->
+      <section style="margin: 90px 0;">
+        <div class="eyebrow">THE NIKI SYSTEM</div>
+        <h2 class="section-h2-pixel" style="font-size: 28px; margin-bottom: 24px;">The CLI is one part of Niki.</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <a href="/" class="workspace-card" style="padding: 24px;">
+            <h3 style="font-family: var(--f-pixel); font-size: 16px; margin: 0 0 8px 0; color: var(--fg);">Multi-agent pipeline</h3>
+            <p style="font-size: 14px; color: var(--muted); margin: 0;">Plan, Code, Test, and Review in isolation.</p>
+          </a>
+          <a href="/analyze" class="workspace-card" style="padding: 24px;">
+            <h3 style="font-family: var(--f-pixel); font-size: 16px; margin: 0 0 8px 0; color: var(--fg);">Repo benchmarks</h3>
+            <p style="font-size: 14px; color: var(--muted); margin: 0;">Verify your codebase's container testability.</p>
+          </a>
+          <a href="/canvas" class="workspace-card" style="padding: 24px;">
+            <h3 style="font-family: var(--f-pixel); font-size: 16px; margin: 0 0 8px 0; color: var(--fg);">Workflow canvas</h3>
+            <p style="font-size: 14px; color: var(--muted); margin: 0;">Wire agent swarms with custom memory and cgroups.</p>
+          </a>
+          <a href="/mcp" class="workspace-card" style="padding: 24px;">
+            <h3 style="font-family: var(--f-pixel); font-size: 16px; margin: 0 0 8px 0; color: var(--fg);">Model Context Protocol</h3>
+            <p style="font-size: 14px; color: var(--muted); margin: 0;">Connect Claude, Cursor, and Windsurf securely.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Closing (§5.6) -->
+      <section style="margin: 100px 0 60px 0;">
+        <h2 class="section-h2-large" style="font-size: 40px;">Keep your codebase safe, the moment agents write code.</h2>
+        <button class="btn btn--solid btn-copy-action" data-copy="cargo install niki-cli" style="margin-top: 20px;">
+          Copy CLI Install Command
+        </button>
+      </section>
+    </main>
+
+    <!-- Footer (§3.2) -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-line-1">Niki © 2026 · Built with Rust for autonomous agent reliability and hermetic container execution.</div>
+          <div class="footer-nav">
+            <a href="/canvas">Workflow Canvas</a>
+            <a href="/mcp">MCP Server</a>
+            <a href="/extension">CLI &amp; Daemon</a>
+            <a href="/pricing">Cloud &amp; Pricing</a>
+            <a href="/changelog">Changelog</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="award-badge">RUST OSS</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

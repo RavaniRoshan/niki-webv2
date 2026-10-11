@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Niki · Hermetic Multi-Agent Coding System</title>
+    <meta name="description" content="Niki isolates autonomous AI agents inside Docker sandboxes to plan, code, test, and review software — producing clean, reviewable Git branches." />
+    <link rel="canonical" href="https://ais-dev-bfvvl67cqopwscdfaahwfk-259500406513.asia-southeast1.run.app/" />
+    
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Niki · Hermetic Multi-Agent Coding System" />
+    <meta property="og:description" content="Isolated AI agents independently plan, code, test, and review within Docker sandboxes, producing reviewable Git branches." />
+    <meta property="og:image" content="/assets/img/hero-landscape.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Niki · Hermetic Multi-Agent Coding System" />
+    <meta name="twitter:description" content="Isolated AI agents independently plan, code, test, and review within Docker sandboxes, producing reviewable Git branches." />
+    <meta name="twitter:image" content="/assets/img/hero-landscape.svg" />
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <!-- JSON-LD WebSite & FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Niki",
+      "url": "https://ais-dev-bfvvl67cqopwscdfaahwfk-259500406513.asia-southeast1.run.app/",
+      "description": "Hermetic Multi-Agent Coding System: isolated AI agents independently plan, code, test, and review within Docker sandboxes, producing reviewable Git branches."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is Niki for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Niki is built for software engineers, platform teams, AI builders, and engineering leads who want autonomous AI coding without risking broken host files, unconstrained execution, or unreviewed deployments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 'hermetic multi-agent coding' mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It means autonomous agents run strictly inside isolated Docker containers with no network egress or host file access. They independently plan, write code, run test suites, and perform AST reviews before anything reaches your repository."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are Docker sandboxes isolated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every sandbox runs with strict Linux cgroup resource limits (CPU and RAM caps), non-root execution, ephemeral file systems, and restricted network namespaces that prevent arbitrary external data exfiltration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does Niki only output reviewable Git branches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Allowing autonomous agents to push directly to production or mutate the main branch causes silent breakages. By delivering reviewable Git branches with passing test logs, human engineers retain full pull request oversight."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use Niki with Claude, Cursor, and custom LLMs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Niki provides a standard Model Context Protocol (MCP) server so Claude Desktop, Cursor, Windsurf, or your private LLM pipelines can dispatch tasks to isolated Docker execution sandboxes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Niki open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The core CLI and local Docker runner are fully open source on GitHub at RavaniRoshan/niki, built in Rust for high reliability and speed."
+          }
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Skip to content -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- 1. Header (§3.1) -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="/" class="site-logo" aria-label="Niki Home">
+            <!-- Niki Pixel N Logo (32x32) -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="logo-icon" aria-hidden="true">
+              <rect x="5" y="4" width="5" height="24" fill="#fafafa"/>
+              <rect x="10" y="9" width="4" height="5" fill="#fafafa"/>
+              <rect x="14" y="14" width="4" height="5" fill="#ff2fd6"/>
+              <rect x="18" y="19" width="4" height="5" fill="#fafafa"/>
+              <rect x="22" y="4" width="5" height="24" fill="#fafafa"/>
+            </svg>
+          </a>
+          <nav class="nav-links" aria-label="Main Navigation">
+            <a href="/explore" class="nav-link">Sandboxes</a>
+            <a href="/pricing" class="nav-link">Cloud & Pricing</a>
+            <div class="nav-dropdown-wrapper">
+              <button class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                Tools
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="nav-dropdown" role="menu">
+                <a href="/extension" class="dropdown-item" role="menuitem">CLI & Daemon</a>
+                <a href="/analyze" class="dropdown-item" role="menuitem">Benchmarks</a>
+                <a href="/canvas" class="dropdown-item" role="menuitem">Workflow Canvas</a>
+                <a href="/mcp" class="dropdown-item" role="menuitem">MCP Server</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="header-right">
+          <button class="cmd-k-pill" aria-label="Open Command Search">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span>⌘K</span>
+          </button>
+          <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost" style="gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="/login" class="btn btn--sm btn--solid">Log In</a>
+          <button class="menu-btn" aria-label="Open mobile menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-backdrop" aria-hidden="true">
+      <div class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+        <div class="drawer-header">
+          <a href="/" class="site-logo" aria-label="Niki Home">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="5" y="4" width="5" height="24" fill="#fafafa"/>
+              <rect x="10" y="9" width="4" height="5" fill="#fafafa"/>
+              <rect x="14" y="14" width="4" height="5" fill="#ff2fd6"/>
+              <rect x="18" y="19" width="4" height="5" fill="#fafafa"/>
+              <rect x="22" y="4" width="5" height="24" fill="#fafafa"/>
+            </svg>
+          </a>
+          <button class="drawer-close-btn modal-close-btn" aria-label="Close menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="drawer-links">
+          <a href="/explore" class="drawer-link">Sandboxes</a>
+          <a href="/pricing" class="drawer-link">Cloud & Pricing</a>
+          <a href="/extension" class="drawer-link">CLI & Daemon</a>
+          <a href="/analyze" class="drawer-link">Benchmarks</a>
+          <a href="/canvas" class="drawer-link">Workflow Canvas</a>
+          <a href="/mcp" class="drawer-link">MCP Server</a>
+          <a href="/changelog" class="drawer-link">Changelog</a>
+          <a href="/login" class="drawer-link">Log In</a>
+          <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="btn btn--ghost" style="width: 100%; margin-top: 12px;">GitHub Repository</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main">
+      <!-- 2. Hero Section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-h1">Autonomous coding agents that test<br>their own work inside sandboxes.</h1>
+          <p class="hero-lede">Niki isolates AI agents inside Docker containers to plan, write, compile, and test code — producing clean, reviewable Git branches instead of breaking your repository.</p>
+          <div class="hero-buttons">
+            <a href="/extension" class="btn btn--solid" style="min-width: 110px; height: 40px;">Install CLI</a>
+            <a href="/explore" class="btn btn--ghost" style="min-width: 130px; height: 40px;">Explore Sandboxes</a>
+          </div>
+        </div>
+
+        <!-- Full-bleed landscape frame with terminal window mockup -->
+        <div class="hero-landscape-wrap">
+          <img src="/assets/img/hero-landscape.svg" alt="Topographic computing terrain" class="hero-landscape-bg" width="1216" height="400" />
+          
+          <div class="hero-window-mock" role="region" aria-label="Niki terminal execution simulator">
+            <div class="window-titlebar">
+              <div class="window-dots" aria-hidden="true">
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+              </div>
+              <div class="window-caption">niki — hermetic-agent-v1.2 (rust-core)</div>
+              <div style="width: 38px;"></div>
+            </div>
+            <div class="window-body">
+              <div class="typing-container">
+                <span style="color: var(--emerald);">$</span>
+                <span id="heroTypingText">niki run "Implement rate-limiter middleware" --hermetic</span>
+                <span class="typing-caret" aria-hidden="true"></span>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 16px;">
+                <div style="background: var(--card-02); border: 1px solid var(--border-01); padding: 12px;">
+                  <div style="font-family: var(--f-mono); font-size: 11px; color: var(--faint);">CONTAINER ISOLATION</div>
+                  <div style="font-family: var(--f-mono); font-size: 13px; color: var(--fg); margin-top: 4px;">docker://niki-sandbox-9482</div>
+                  <div style="display: flex; gap: 4px; margin-top: 8px;">
+                    <span class="chip" style="font-size: 10px; color: var(--emerald);">CGROUP 2GB</span>
+                    <span class="chip" style="font-size: 10px;">NO EGRESS</span>
+                  </div>
+                </div>
+                <div style="background: var(--card-02); border: 1px solid var(--border-01); padding: 12px;">
+                  <div style="font-family: var(--f-mono); font-size: 11px; color: var(--faint);">TEST VERIFICATION</div>
+                  <div style="font-family: var(--f-mono); font-size: 13px; color: #05f190; margin-top: 4px;">48 passed · 0 failed</div>
+                  <div style="font-family: var(--f-mono); font-size: 11px; color: var(--muted); margin-top: 6px;">Git branch: feature/rate-limiter</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Problem statement -->
+      <section>
+        <div class="ticker-band" aria-hidden="true">
+          <div class="ticker-track">
+            <span class="ticker-text">::: ISOLATED AGENTS ::: DOCKER SANDBOXES ::: HERMETIC COMPILATION ::: RUST PERFORMANCE ::: ZERO HOST ACCESS ::: REVIEWABLE GIT BRANCHES :::</span>
+            <span class="ticker-text">::: ISOLATED AGENTS ::: DOCKER SANDBOXES ::: HERMETIC COMPILATION ::: RUST PERFORMANCE ::: ZERO HOST ACCESS ::: REVIEWABLE GIT BRANCHES :::</span>
+          </div>
+        </div>
+
+        <div class="container" style="padding-top: 24px; padding-bottom: 48px;">
+          <div style="font-family: var(--f-mono); font-size: 14px; color: var(--faint); margin-bottom: 24px;">
+            Welcome to Niki — the hermetic multi-agent coding system for engineers who refuse to give raw shell access to autonomous models.
+          </div>
+          <h2 class="section-h2-large">AI coding agents destroy working codebases<br>when unconstrained.</h2>
+          <h2 class="section-h2-large" style="color: var(--muted);">Time to isolate them.</h2>
+        </div>
+      </section>
+
+      <!-- 4. Multi-Agent Container Workspace Mock -->
+      <section class="container" style="margin-top: 40px; margin-bottom: 80px;">
+        <div class="eyebrow">NIKI WORKSPACE — 4 AGENTS ORCHESTRATING IN ISOLATION</div>
+        <div class="workspace-cards-grid">
+          <!-- Rust middleware snippet card -->
+          <div class="workspace-card">
+            <div class="workspace-card-header">
+              <span class="card-title-mono">// src/middleware/rate_limit.rs</span>
+              <span class="chip">CODER</span>
+            </div>
+            <pre style="margin: 0; font-family: var(--f-mono); font-size: 12px; color: var(--muted); overflow: hidden;">pub struct RateLimiter {
+    capacity: u32,
+    refill_rate: Duration,
+}
+impl RateLimiter {
+    pub async fn acquire(&amp;self) -&gt; Result&lt;()&gt; { ... }
+}</pre>
+          </div>
+
+          <!-- Sandbox container details card -->
+          <div class="workspace-card">
+            <div class="workspace-card-header">
+              <span class="card-title-mono">Docker Sandbox #812</span>
+              <span class="chip">CONTAINER</span>
+            </div>
+            <div style="font-family: var(--f-mono); font-size: 12px; color: var(--muted); line-height: 1.6;">
+              Base: rust:1.80-alpine<br>
+              Limits: 2 CPU · 2048 MB RAM<br>
+              Network: Isolated loopback only<br>
+              Status: Hermetic environment active
+            </div>
+          </div>
+
+          <!-- Test harness card -->
+          <div class="workspace-card">
+            <div class="workspace-card-header">
+              <span class="card-title-mono">cargo test --all</span>
+              <span class="chip" style="color: var(--emerald);">TESTER</span>
+            </div>
+            <div style="height: 64px; background: var(--card-02); border: 1px dashed var(--border-02); display: flex; align-items: center; justify-content: center; font-family: var(--f-mono); font-size: 12px; color: var(--emerald);">
+              test result: ok. 48 passed; 0 failed; 0 ignored
+            </div>
+          </div>
+
+          <!-- To-do agent task list card -->
+          <div class="workspace-card">
+            <div class="workspace-card-header">
+              <span class="card-title-mono">Agent Planner Plan</span>
+              <span class="chip">PLANNER</span>
+            </div>
+            <div style="font-family: var(--f-mono); font-size: 12px; color: var(--muted); line-height: 1.6;">
+              ✓ Inspect AST token stream<br>
+              ✓ Generate token bucket algorithm<br>
+              • Run concurrency stress harness<br>
+              • Format Git commit &amp; PR body
+            </div>
+          </div>
+
+          <!-- AST Review Card -->
+          <div class="workspace-card">
+            <div class="workspace-card-header">
+              <span class="card-title-mono">AST Reviewer</span>
+              <span class="chip">REVIEWER</span>
+            </div>
+            <div style="height: 64px; background: var(--card-02); display: flex; align-items: center; justify-content: center; font-family: var(--f-mono); font-size: 11px; color: var(--fg);">
+              ast-grep: 0 security flaws · Memory safe
+            </div>
+          </div>
+
+          <!-- Git Output Card -->
+          <div class="workspace-card">
+            <div class="workspace-card-header">
+              <span class="card-title-mono">Git Branch Created</span>
+              <span class="chip">OUTPUT</span>
+            </div>
+            <div style="font-family: var(--f-mono); font-size: 12px; color: var(--muted);">
+              branch: feature/rate-limiter<br>
+              ready for pull request review
+            </div>
+          </div>
+
+          <!-- Dockerfile card -->
+          <div class="workspace-card">
+            <div class="workspace-card-header">
+              <span class="card-title-mono">Dockerfile.hermetic</span>
+              <span class="chip">DOCKER</span>
+            </div>
+            <div style="font-family: var(--f-mono); font-size: 12px; color: var(--muted);">
+              FROM rust:alpine AS build<br>
+              RUN cargo build --release
+            </div>
+          </div>
+
+          <!-- Rust CLI Engine card -->
+          <div class="workspace-card">
+            <div class="workspace-card-header">
+              <span class="card-title-mono">niki-daemon (Rust)</span>
+              <span class="chip">ENGINE</span>
+            </div>
+            <div style="font-family: var(--f-mono); font-size: 12px; color: var(--muted);">
+              Daemon startup: 14.2ms<br>
+              IPC socket: /var/run/niki.sock
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Three value props -->
+      <section class="container" style="margin-bottom: 100px;">
+        <div class="value-props-grid">
+          <div class="value-prop-card">
+            <div class="value-prop-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+              Hermetic Docker Isolation
+            </div>
+            <p style="margin: 0; font-family: var(--f-sans); font-size: 14px; line-height: 22px; color: var(--muted);">
+              Agents code, compile, and execute inside throwaway sandboxes with zero host access and strict resource boundaries.
+            </p>
+          </div>
+
+          <div class="value-prop-card">
+            <div class="value-prop-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Automated Test Verification
+            </div>
+            <p style="margin: 0; font-family: var(--f-sans); font-size: 14px; line-height: 22px; color: var(--muted);">
+              Every proposed change is proven with real test suites, linters, and AST security scanners before creating commits.
+            </p>
+          </div>
+
+          <div class="value-prop-card">
+            <div class="value-prop-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M6 21V9a9 9 0 0 0 9 9"></path></svg>
+              Reviewable Git Branches
+            </div>
+            <p style="margin: 0; font-family: var(--f-sans); font-size: 14px; line-height: 22px; color: var(--muted);">
+              Receive clean pull requests and isolated branches you can inspect, rebase, and merge like human developer code.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Canvas feature (Workflow Orchestration) -->
+      <section class="container feature-row">
+        <div>
+          <h2 class="section-h2-pixel">Build multi-agent pipelines on an infinite canvas.</h2>
+          <div class="feature-body">
+            <p>Visually wire Planner, Coder, Test Runner, and Reviewer nodes. Inspect the data flow as tasks pass between agents.</p>
+            <p>Group tasks, attach test fixtures, define Docker memory thresholds, and let your agent swarm assemble review-ready branches.</p>
+          </div>
+          <a href="/canvas" class="btn btn--solid">See Canvas</a>
+        </div>
+        <div class="video-demo-frame">
+          <div class="video-demo-badge">AGENT WORKFLOW CANVAS</div>
+          <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Interactive Pipeline Visualizer]</div>
+          <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- 7. Sandbox feed feature -->
+      <section class="container feature-row">
+        <div>
+          <h2 class="section-h2-large" style="font-size: 38px;">Agent sandboxes, and how they execute.</h2>
+          <div class="feature-body">
+            <p>We don't let models edit raw production repositories. Every execution takes place inside a container tailored to your exact toolchain: Rust, TypeScript, Go, Python.</p>
+            <p>Browse preconfigured sandbox recipes with dependency locks, test harnesses, and strict resource isolation.</p>
+          </div>
+          <a href="/explore" class="btn btn--solid">Explore Sandboxes</a>
+        </div>
+        <div class="video-demo-frame">
+          <div class="video-demo-badge">HERMETIC RUNNER DEMO</div>
+          <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Docker Sandbox Execution Stream]</div>
+          <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- 8. Discoveries feature (Agent Tasks) -->
+      <section class="container feature-row">
+        <div>
+          <h2 class="section-h2-pixel">Thousands of verified agent tasks</h2>
+          <div class="feature-body">
+            <p>Bug fixes. Security patches. Microservice refactoring. Test suite generation. Filter tasks by programming language, build tool, and container footprint.</p>
+            <p>Jump straight into living sandbox blueprints that execute deterministically on your local machine or in Niki Cloud.</p>
+          </div>
+          <a href="/explore?tab=elements" class="btn btn--solid">Explore recipes</a>
+        </div>
+        <div class="video-demo-frame">
+          <div class="video-demo-badge">TASK RECIPES DEMO</div>
+          <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Automated Task Execution]</div>
+          <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- 9. Save system (Container Snapshot Engine) -->
+      <section class="container feature-row">
+        <div>
+          <h2 class="section-h2-pixel">A container snapshot system designed for AI reliability.</h2>
+          <div class="feature-body">
+            <p>Every step taken by the Coder agent is snapshotted into copy-on-write container layers. If a unit test fails, the agent rolls back to the prior clean state instantly.</p>
+            <p>No corrupted local file trees. No broken node_modules. No phantom compiler artifacts.</p>
+          </div>
+        </div>
+        <div class="video-demo-frame">
+          <div class="video-demo-badge">ROLLBACK ENGINE</div>
+          <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Copy-On-Write Sandbox Revert]</div>
+          <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- 10. Save anywhere (Run from CLI or IDE) -->
+      <section class="container feature-row">
+        <div>
+          <h2 class="section-h2-pixel">Run from any terminal or IDE, without friction.</h2>
+          <div class="feature-body">
+            <p>Install via Cargo, Homebrew, or binary releases. Trigger Niki directly from your terminal, VS Code, Cursor, or automated GitHub Actions workflows.</p>
+            <p>One command runs the entire hermetic swarm: niki run "fix issue #142".</p>
+          </div>
+          <a href="/extension" class="btn btn--solid">See the CLI</a>
+        </div>
+        <div class="video-demo-frame">
+          <div class="video-demo-badge">CLI TERMINAL DEMO</div>
+          <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[CLI & Daemon In Action]</div>
+          <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- 11. Pattern wall (14 Sandbox Recipes) -->
+      <section class="container" style="margin: 80px auto;">
+        <div class="eyebrow">PRECONFIGURED SANDBOX ENVIRONMENTS</div>
+        <div class="inspo-wall-grid">
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>Rust Actix API</span><span class="text-faint">42 tests · 2m</span></div>
+            <div class="inspo-card-preview">cargo test --release --all-targets --locked</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>Next.js 15 Fullstack</span><span class="text-faint">28 tests · 1m</span></div>
+            <div class="inspo-card-preview">pnpm test:e2e &amp;&amp; pnpm lint:ast</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>Python FastAPI ML</span><span class="text-faint">34 tests · 3m</span></div>
+            <div class="inspo-card-preview">pytest tests/ --cov=app --cov-report=xml</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>Go Gin Microservice</span><span class="text-faint">19 tests · 45s</span></div>
+            <div class="inspo-card-preview">go test -v -race ./... &amp;&amp; staticcheck ./...</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>Postgres Migration</span><span class="text-faint">12 tests · 30s</span></div>
+            <div class="inspo-card-preview">sqlx migrate run &amp;&amp; cargo test --test db</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>TypeScript SDK Refactor</span><span class="text-faint">56 tests · 2m</span></div>
+            <div class="inspo-card-preview">vitest run --coverage &amp;&amp; tsc --noEmit</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>Kubernetes Helm Spec</span><span class="text-faint">8 tests · 15s</span></div>
+            <div class="inspo-card-preview">helm lint ./charts &amp;&amp; conftest test</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>C++ Memory Leak Audit</span><span class="text-faint">14 tests · 4m</span></div>
+            <div class="inspo-card-preview">valgrind --leak-check=full ./build/test_suite</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>Solana Anchor Program</span><span class="text-faint">22 tests · 2m</span></div>
+            <div class="inspo-card-preview">anchor test --skip-local-validator</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>Elixir Phoenix Channels</span><span class="text-faint">31 tests · 1m</span></div>
+            <div class="inspo-card-preview">mix test &amp;&amp; mix credo --strict</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>GraphQL Resolver</span><span class="text-faint">17 tests · 50s</span></div>
+            <div class="inspo-card-preview">graphql-codegen &amp;&amp; npm test -- resolver.test</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>SvelteKit Auth Flow</span><span class="text-faint">25 tests · 1m</span></div>
+            <div class="inspo-card-preview">playwright test --project=chromium</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>WASM Image Encoder</span><span class="text-faint">11 tests · 3m</span></div>
+            <div class="inspo-card-preview">wasm-pack test --headless --firefox</div>
+          </div>
+          <div class="inspo-board-card">
+            <div class="inspo-card-header"><span>Docker Compose Stack</span><span class="text-faint">16 tests · 2m</span></div>
+            <div class="inspo-card-preview">docker compose -f test.yml up --exit-code-from test</div>
+          </div>
+        </div>
+
+        <div class="hashtag-row">
+          <span class="chip">#rust</span>
+          <span class="chip">#docker</span>
+          <span class="chip">#hermetic</span>
+          <span class="chip">#multi-agent</span>
+          <span class="chip">#git</span>
+          <span class="chip">#ast</span>
+          <span class="chip">#sandbox</span>
+          <span class="chip">#cargo</span>
+          <span class="chip">#ci-cd</span>
+          <span class="chip">#isolated</span>
+        </div>
+      </section>
+
+      <!-- 12. Search -->
+      <section class="container" style="margin: 90px auto;">
+        <h2 class="section-h2-pixel-lg">Executed. But how do you audit it?</h2>
+        <div style="background: var(--card); border: 1px solid var(--border-02); padding: 20px; margin: 28px 0; display: flex; align-items: center; justify-content: space-between;">
+          <div style="font-family: var(--f-mono); font-size: 14px; color: var(--fg); display: flex; align-items: center; gap: 12px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span>SEARCH ⌘K · find tasks that failed cargo test</span>
+          </div>
+          <span class="chip">AUDIT LOG QUERY</span>
+        </div>
+        <p class="feature-body">
+          Niki logs every container execution, compiler error, and AST review. Query across thousands of agent runs in plain English to inspect diffs and test logs.
+        </p>
+        <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 28px;">
+          <button class="btn btn--solid btn-watch-video">Watch audit demo</button>
+        </div>
+
+        <!-- Detail card mock -->
+        <div style="background: var(--card); border: 1px solid var(--border-02); padding: 24px; max-width: 680px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-01); padding-bottom: 12px; margin-bottom: 16px;">
+            <span style="font-family: var(--f-mono); font-size: 14px; color: var(--fg);">task-4819 / token-bucket-rate-limiter</span>
+            <span style="font-family: var(--f-mono); font-size: 11px; color: var(--faint);">ESC CLOSE / ← PREV / NEXT →</span>
+          </div>
+          <p style="margin: 0 0 12px 0; font-family: var(--f-sans); font-size: 14px; color: var(--muted);">
+            Task completed in 42.8s. All 48 unit tests passing. Branch feature/rate-limiter verified clean.
+          </p>
+          <div style="display: flex; gap: 8px;">
+            <span class="chip" style="color: var(--emerald);">PASSED</span>
+            <span class="chip">#Rust</span>
+            <span class="chip">#Docker-Isolated</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13. Tagging -->
+      <section class="container" style="margin: 40px auto 80px auto;">
+        <p class="feature-body" style="max-width: 600px;">
+          Or tag your own sandboxes. Custom metadata groups tasks by repository, branch, or team security policies.
+        </p>
+        <div style="display: flex; gap: 8px;">
+          <span class="chip">#Security-Audit</span>
+        </div>
+      </section>
+
+      <!-- 14. Analyzer & Benchmarks -->
+      <section class="container" style="margin: 90px auto;">
+        <h2 class="section-h2-pixel-md">Benchmark your repo with container analysis attached.</h2>
+        <p class="feature-body" style="max-width: 680px;">
+          We built the analyzer for engineering leads — it tests whether your repository is agent-ready: build reproducibility, Dockerfile sanity, and test speed.
+        </p>
+
+        <!-- CTA Input mock -->
+        <div style="background: var(--card); border: 1px solid var(--border-02); padding: 24px; max-width: 720px; margin: 28px 0;">
+          <div class="eyebrow">ANALYZE REPOSITORY SANDBOX READINESS</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 260px; height: 40px; background: var(--bg); border: 1px solid var(--border-02); display: flex; align-items: center; padding: 0 12px; font-family: var(--f-mono); font-size: 14px; color: var(--fg);">
+              <span style="color: var(--faint); margin-right: 4px;">https://github.com/</span>RavaniRoshan/niki
+            </div>
+            <a href="/analyze" class="btn btn--solid">Analyze</a>
+          </div>
+
+          <!-- Detection log mock -->
+          <div style="background: var(--bg); border: 1px solid var(--border-01); padding: 14px; margin-top: 20px; font-family: var(--f-mono); font-size: 12px; color: var(--muted); line-height: 1.8;">
+            <div>&gt; Detected Cargo workspace with Rust 1.80 toolchain</div>
+            <div>&gt; Ran cargo test in 1.4s inside isolated Docker sandbox</div>
+            <div style="color: #05f190;">✓ Repository agent-ready · 100% Hermetic Score</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 15. Learn more -->
+      <section class="container" style="margin-bottom: 90px;">
+        <p class="feature-body" style="max-width: 600px;">
+          Now you can let AI agents write software with deterministic confidence. Not blindly executing in production anymore.
+        </p>
+        <a href="/analyze" class="btn btn--ghost">Learn more</a>
+      </section>
+
+      <!-- 16. MCP AI Connector -->
+      <section class="container" style="margin: 90px auto;">
+        <h2 class="section-h2-pixel-md">Finally, plug isolated sandboxes into your AI tools.</h2>
+        <p class="feature-body" style="max-width: 700px;">
+          Every Docker sandbox, test suite, and AST tool in Niki is one MCP connection away from Claude, Cursor, and Windsurf.
+        </p>
+        <div style="display: flex; gap: 12px; margin-bottom: 32px;">
+          <a href="/mcp" class="btn btn--solid">Start here</a>
+          <a href="/mcp" class="btn btn--ghost">Learn more</a>
+        </div>
+
+        <!-- Chat Mock -->
+        <div style="background: var(--card); border: 1px solid var(--border-02); padding: 24px; max-width: 720px; font-family: var(--f-mono); font-size: 13px;">
+          <div style="color: var(--muted); margin-bottom: 12px;">
+            <span style="color: var(--fg);">Claude / Cursor:</span> Run unit test suite and refactor auth error handling
+          </div>
+          <div style="color: var(--fg); line-height: 1.6; border-left: 2px solid var(--accent); padding-left: 14px;">
+            <div style="color: var(--faint); font-size: 11px; margin-bottom: 6px;">Used niki · exec_sandbox(image="rust:alpine", task="auth_refactor")</div>
+            1. Spawned isolated container niki-sb-4921<br>
+            2. Coder modified src/auth.rs with Result&lt;User, AuthError&gt;<br>
+            3. Tester executed cargo test --test auth_tests (passed 14/14)<br>
+            <div style="color: var(--emerald); margin-top: 8px;">✓ Created reviewable Git branch feature/auth-refactor</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17. Docs -->
+      <section class="container feature-row">
+        <div>
+          <h2 class="section-h2-pixel">Write specs where you execute.</h2>
+          <div class="feature-body">
+            <p>Write technical specifications and architecture decision records right inside your sandbox workspaces.</p>
+            <p>Task briefs, test assertions, benchmark thresholds — all organized with the code they verify. Thinking, containment, and coding, united in one place.</p>
+          </div>
+        </div>
+        <div class="video-demo-frame">
+          <div class="video-demo-badge">SPEC ENGINE</div>
+          <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Markdown Specs &amp; ADRs]</div>
+          <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- 18. Privacy / Deployment tiers -->
+      <section class="container" style="margin: 90px auto;">
+        <h2 class="section-h2-pixel">Local, cloud sandbox, team VPC, or air-gapped. Your call.</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 32px 0;">
+          <div style="background: var(--card); border: 1px solid var(--border-02); padding: 24px;">
+            <div class="eyebrow">LOCAL CLI (OPEN SOURCE)</div>
+            <p style="margin: 0; font-family: var(--f-sans); font-size: 14px; line-height: 22px; color: var(--muted);">
+              Run 100% locally on your machine with your existing Docker or Podman daemon. Zero data leaves your computer.
+            </p>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--border-02); padding: 24px;">
+            <div class="eyebrow">CLOUD SANDBOXES</div>
+            <p style="margin: 0; font-family: var(--f-sans); font-size: 14px; line-height: 22px; color: var(--muted);">
+              Offload compute to isolated cloud microVMs with dedicated GPU/CPU resources, GitHub PR webhooks, and team sync.
+            </p>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--border-02); padding: 24px;">
+            <div class="eyebrow">ENTERPRISE AIR-GAPPED</div>
+            <p style="margin: 0; font-family: var(--f-sans); font-size: 14px; line-height: 22px; color: var(--muted);">
+              Deploy inside your AWS/GCP private VPC with custom container registries and strict SOC2/FedRAMP network policies.
+            </p>
+          </div>
+        </div>
+
+        <div class="video-demo-frame" style="max-width: 800px; margin-top: 24px;">
+          <div class="video-demo-badge">VPC ISOLATION</div>
+          <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Enterprise VPC Architecture Walkthrough]</div>
+          <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- 19. Testimonials -->
+      <section class="container" style="margin: 90px auto;">
+        <h2 class="section-h2-pixel-36">Testimonials</h2>
+        <div class="testimonial-box" role="region" aria-label="Testimonial carousel">
+          <div class="testimonial-header">
+            <div class="testimonial-counter">01 / 04</div>
+            <div class="testimonial-nav">
+              <button class="nav-arrow-btn prev-quote-btn" aria-label="Previous testimonial">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button class="nav-arrow-btn next-quote-btn" aria-label="Next testimonial">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </div>
+          <div class="testimonial-quote-mark">”</div>
+          <div class="testimonial-quote">“Niki solved our biggest fear with AI coding: destructive hallucinations. Agents test and compile everything in isolated containers, delivering pristine Git PRs.”</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">D</div>
+            <div>
+              <div class="author-name">Diego</div>
+              <div class="author-role">VP of Engineering</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 20. Membership teaser -->
+      <section class="container" style="margin: 90px auto;">
+        <h2 class="section-h2-pixel-36">Membership.</h2>
+        <div class="pricing-toggle-wrap" role="radiogroup" aria-label="Billing frequency">
+          <button class="pricing-toggle-btn is-active" data-plan="monthly" role="radio" aria-checked="true">Pay monthly</button>
+          <button class="pricing-toggle-btn" data-plan="yearly" role="radio" aria-checked="false">
+            Pay yearly <span class="discount-badge">-17%</span>
+          </button>
+        </div>
+
+        <div class="pricing-tiers-grid">
+          <!-- Community (Open Source) -->
+          <div class="tier-card">
+            <h3 class="tier-name">Community</h3>
+            <div class="tier-tagline">Open-source Rust CLI &amp; local Docker runner for individual builders.</div>
+            <div class="tier-price-row">
+              <span class="tier-price" id="price-basic">$0</span>
+              <span class="tier-period" id="period-basic">forever</span>
+            </div>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--full">Install CLI</a>
+            <ul class="tier-feature-list">
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Full open-source Rust CLI engine</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Unlimited local Docker container sandboxes</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>4-agent pipeline: Plan, Code, Test, Review</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Local MCP server for Claude and Cursor</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Community Discord and GitHub issues</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Cloud Developer -->
+          <div class="tier-card is-popular">
+            <div class="popular-badge">Most popular</div>
+            <h3 class="tier-name">Cloud Developer</h3>
+            <div class="tier-tagline">Managed cloud Docker sandboxes with zero local CPU overhead and GitHub bot integration.</div>
+            <div class="tier-price-row">
+              <span class="tier-price" id="price-individual">$19</span>
+              <span class="tier-period" id="period-individual">/mo</span>
+            </div>
+            <a href="/upgrade?plan=individual" class="btn btn--solid btn--full">Get Cloud Developer</a>
+            <div class="tier-footnote">Cancel anytime</div>
+            <ul class="tier-feature-list">
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Everything in Community</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>100 cloud sandbox CPU hours / month</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>GitHub Pull Request Bot automation</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Cloud MCP endpoint with persistent token</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Priority concurrent execution &amp; email support</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Team Infrastructure -->
+          <div class="tier-card">
+            <h3 class="tier-name">Team</h3>
+            <div class="tier-tagline">For engineering orgs requiring shared sandboxes, SOC2 security, and custom images.</div>
+            <div class="tier-price-row">
+              <span class="tier-price" id="price-team">$49</span>
+              <span class="tier-period" id="period-team">/seat/mo</span>
+            </div>
+            <a href="/upgrade?plan=team" class="btn btn--ghost btn--full">Get Team Plan</a>
+            <div class="tier-footnote">Per-seat pricing</div>
+            <ul class="tier-feature-list">
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Everything in Cloud Developer, for each seat</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Custom private Docker image registries</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Strict VPC egress firewall rules &amp; audit trails</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Dedicated Slack support &amp; custom SLA</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <a href="/pricing" class="btn btn--ghost" style="font-size: 13px;">Compare all plans →</a>
+        </div>
+      </section>
+
+      <!-- 21. FAQ -->
+      <section class="container" style="margin: 90px auto;">
+        <h2 class="section-h2-pixel">Answers</h2>
+        <div class="faq-accordion">
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>Who is Niki for?</span>
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer">
+              Niki is built for developers, platform engineers, and software engineering teams who want the productivity of autonomous coding agents without the danger of unconstrained shell execution or broken repositories.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>What does "hermetic multi-agent coding" mean?</span>
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer">
+              It means agents are strictly contained inside isolated Docker sandboxes. The Planner, Coder, Tester, and Reviewer run in a reproducible container environment with zero host access, compile and test their code, and only produce a clean Git branch.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>How are Docker sandboxes isolated?</span>
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer">
+              Every sandbox operates with cgroup v2 resource limits, read-only root filesystems where appropriate, disabled network egress to prevent data leaks, and non-root user execution.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>Why does Niki only output reviewable Git branches?</span>
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer">
+              Direct modifications to live developer files often cause subtle breaking changes. By packaging completed tasks into clean Git branches with verifiable test logs, developers maintain complete control over code review.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>Can I use Niki with Claude, Cursor, and custom LLMs?</span>
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer">
+              Yes. Niki includes an MCP server implementation. You can point Claude Desktop, Cursor, or your internal LLM agents directly to Niki to run tasks in isolated containers.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>Is Niki open source?</span>
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer">
+              Yes, the core Rust CLI and local Docker container engine are free and open source on GitHub at github.com/RavaniRoshan/niki.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 22. Closing -->
+      <section class="container" style="margin: 120px auto 80px auto; text-align: left;">
+        <h2 class="section-h2-large" style="font-size: 42px; letter-spacing: -0.84px;">Your autonomous agents have safe boundaries now.</h2>
+        <p class="feature-body" style="margin-bottom: 28px;">Start coding with deterministic containment.</p>
+        <a href="/extension" class="btn btn--solid">Get Started with Niki</a>
+      </section>
+    </main>
+
+    <!-- 23. Footer (§3.2) -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-line-1">
+            Niki © 2026 · Built with Rust for autonomous agent reliability and hermetic container execution.
+          </div>
+          <div class="footer-nav">
+            <a href="/canvas">Workflow Canvas</a>
+            <a href="/mcp">MCP Server</a>
+            <a href="/extension">CLI &amp; Daemon</a>
+            <a href="/pricing">Cloud &amp; Pricing</a>
+            <a href="/changelog">Changelog</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer">GitHub (RavaniRoshan/niki)</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-socials">
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l11.733 16h4.267l-11.733-16z"></path><path d="M4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
+            </a>
+            <a href="mailto:hi@example.com" aria-label="Email">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+          </div>
+
+          <div class="footer-legal">
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="award-badge" aria-label="Niki Open Source">RUST OSS</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Shared Command Palette Modal (⌘K) -->
+    <div id="cmdPalette" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Command search palette">
+      <div class="cmd-palette-box">
+        <div class="cmd-input-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" class="cmd-input" placeholder="Search Niki sandboxes, recipes, tasks, CLI commands..." aria-label="Search prompt" autofocus />
+          <button class="modal-close-btn" aria-label="Close command search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="cmd-results" role="listbox"></div>
+      </div>
+    </div>
+
+    <!-- Submit Sandbox Recipe Modal -->
+    <div id="submitModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Submit sandbox recipe">
+      <div class="modal-box">
+        <div class="modal-header">
+          <span class="modal-title">SUBMIT SANDBOX RECIPE</span>
+          <button class="modal-close-btn" aria-label="Close submit dialog">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form onsubmit="event.preventDefault(); alert('Sandbox recipe submitted for community review.'); document.getElementById('submitModal').classList.remove('is-active');">
+            <div class="form-field">
+              <label class="form-label">DOCKERFILE / REPOSITORY URL</label>
+              <input type="url" class="form-input" placeholder="https://github.com/org/repo" required />
+            </div>
+            <div class="form-field">
+              <label class="form-label">RUNTIME ENVIRONMENT</label>
+              <select class="form-input" style="background: var(--card);">
+                <option>Rust 1.80+ (cargo test)</option>
+                <option>TypeScript / Node.js 22 (vitest)</option>
+                <option>Python 3.12 (pytest)</option>
+                <option>Go 1.23 (go test)</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label">VERIFICATION TEST COMMAND</label>
+              <input type="text" class="form-input" placeholder="cargo test --release" required />
+            </div>
+            <button type="submit" class="btn btn--solid btn--full" style="margin-top: 12px;">Submit Recipe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Watch demo">
+      <div class="modal-box" style="max-width: 800px;">
+        <div class="modal-header">
+          <span class="modal-title">NIKI HERMETIC MULTI-AGENT DEMO</span>
+          <button class="modal-close-btn" aria-label="Close demo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="modal-body" style="padding: 0;">
+          <div class="video-demo-frame" style="border: none;">
+            <div style="font-family: var(--f-mono); font-size: 14px; color: var(--fg); text-align: center;">
+              ▶ Planner $\rightarrow$ Coder $\rightarrow$ Tester $\rightarrow$ Reviewer Execution in Docker Sandbox
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

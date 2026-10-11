@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Account Settings · Niki</title>
+    <meta name="description" content="Manage your Niki account, Docker sandboxes, and AI tool integrations." />
+    <link rel="canonical" href="https://ais-dev-bfvvl67cqopwscdfaahwfk-259500406513.asia-southeast1.run.app/settings/account" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Header (§3.1) -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="/" class="site-logo" aria-label="Niki Home">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="logo-icon">
+              <rect x="5" y="4" width="5" height="24" fill="#fafafa"/>
+              <rect x="10" y="9" width="4" height="5" fill="#fafafa"/>
+              <rect x="14" y="14" width="4" height="5" fill="#ff2fd6"/>
+              <rect x="18" y="19" width="4" height="5" fill="#fafafa"/>
+              <rect x="22" y="4" width="5" height="24" fill="#fafafa"/>
+            </svg>
+          </a>
+          <nav class="nav-links">
+            <a href="/explore" class="nav-link">Sandboxes</a>
+            <a href="/pricing" class="nav-link">Cloud &amp; Pricing</a>
+            <a href="/canvas" class="nav-link">Canvas</a>
+          </nav>
+        </div>
+        <div class="header-right">
+          <div class="chip" style="color: var(--emerald); border-color: rgba(5,241,144,0.3); background: rgba(5,241,144,0.05);">● Cloud Runner Active</div>
+          <a href="/" class="btn btn--sm btn--ghost">Exit</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="container" style="padding-top: 40px; margin-bottom: 80px;">
+      <h1 class="hero-h1" style="font-size: 32px; margin-bottom: 32px;">Workspace Settings</h1>
+
+      <div style="display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start;">
+        <!-- Left Tabs (§5.14) -->
+        <nav style="display: flex; flex-direction: column; gap: 6px;" aria-label="Settings Tabs">
+          <button id="tabBtnAccount" class="btn btn--ghost" style="justify-content: flex-start; width: 100%; border: none;">Account</button>
+          <button id="tabBtnIntegrations" class="btn btn--solid" style="justify-content: flex-start; width: 100%;">Integrations &amp; MCP</button>
+          <button id="tabBtnBilling" class="btn btn--ghost" style="justify-content: flex-start; width: 100%; border: none;">Billing &amp; Compute</button>
+        </nav>
+
+        <!-- Main Panel (§5.14) -->
+        <div style="background: var(--card); border: 1px solid var(--border-02); padding: 32px;">
+          <!-- Integrations Panel -->
+          <div id="panelIntegrations">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h2 class="section-h2-pixel" style="font-size: 24px; margin: 0;">Model Context Protocol (MCP)</h2>
+              <span class="chip" style="color: var(--emerald);">v1.0 Ready</span>
+            </div>
+            <p class="feature-body" style="font-size: 14px; margin-bottom: 24px;">
+              Connect your local or cloud Niki sandbox runner to Claude Desktop, Cursor, or Windsurf. Agents issue commands inside isolated Docker containers with zero host access.
+            </p>
+
+            <div class="form-field" style="margin-bottom: 24px;">
+              <label class="form-label">PERSONAL MCP SERVER ENDPOINT</label>
+              <div style="display: flex; gap: 8px;">
+                <input type="text" class="form-input" id="mcpTokenInput" value="https://mcp.niki.dev/v1/sse?token=nk_live_74930bf42" readonly style="flex: 1; font-family: var(--f-mono); font-size: 13px;" />
+                <button class="btn btn--ghost btn-copy-action" data-copy="https://mcp.niki.dev/v1/sse?token=nk_live_74930bf42">Copy</button>
+              </div>
+            </div>
+
+            <div style="background: var(--bg); border: 1px solid var(--border-01); padding: 20px; margin-bottom: 24px;">
+              <div class="eyebrow" style="margin-bottom: 8px;">CURSOR &amp; CLAUDE CONFIGURATION (~/.config/claude/claude_desktop_config.json)</div>
+              <pre style="margin: 0; font-family: var(--f-mono); font-size: 12px; color: var(--muted); line-height: 1.6; overflow-x: auto;">{
+  "mcpServers": {
+    "niki": {
+      "url": "https://mcp.niki.dev/v1/sse",
+      "headers": {
+        "Authorization": "Bearer nk_live_74930bf42"
+      }
+    }
+  }
+}</pre>
+            </div>
+
+            <div id="settingsToast" style="display: none; padding: 10px 14px; margin-bottom: 16px; background: rgba(5,241,144,0.1); border: 1px solid var(--emerald); font-family: var(--f-mono); font-size: 12px; color: var(--emerald);"></div>
+
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+              <button class="btn btn--solid" onclick="testConnection()">Verify MCP Connection</button>
+              <button class="btn btn--ghost" onclick="regenToken()">Regenerate Daemon Token</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer (§3.2) -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-line-1">Niki © 2026 · Hermetic multi-agent coding system built in Rust.</div>
+          <div class="footer-nav">
+            <a href="/explore">Sandboxes</a>
+            <a href="/extension">CLI &amp; Daemon</a>
+            <a href="/analyze">Benchmarks</a>
+            <a href="/canvas">Canvas</a>
+            <a href="/mcp">MCP</a>
+            <a href="/pricing">Pricing</a>
+            <a href="/changelog">Changelog</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function showToast(msg) {
+        const toast = document.getElementById('settingsToast');
+        toast.style.display = 'block';
+        toast.textContent = msg;
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3500);
+      }
+
+      function testConnection() {
+        showToast('Ping successful: Niki Docker daemon responding (latency 12ms, 0 active sandboxes).');
+      }
+
+      function regenToken() {
+        const rand = Math.random().toString(36).substring(2, 11);
+        const newToken = 'https://mcp.niki.dev/v1/sse?token=nk_live_' + rand;
+        document.getElementById('mcpTokenInput').value = newToken;
+        showToast('New MCP authorization token generated and active.');
+      }
+    </script>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

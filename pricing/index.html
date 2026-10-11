@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Cloud &amp; Pricing · Niki</title>
+    <meta name="description" content="Open-source core with managed Cloud Docker sandbox compute tiers and Team seats." />
+    <link rel="canonical" href="https://ais-dev-bfvvl67cqopwscdfaahwfk-259500406513.asia-southeast1.run.app/pricing" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Niki",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Linux, macOS, Windows, Docker",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Community Open Source",
+          "price": "0.00",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Cloud Developer Monthly",
+          "price": "19.00",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Cloud Developer Yearly",
+          "price": "188.00",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Team Monthly",
+          "price": "49.00",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Team Yearly",
+          "price": "487.00",
+          "priceCurrency": "USD"
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Header (§3.1) -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="/" class="site-logo" aria-label="Niki Home">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="logo-icon">
+              <rect x="5" y="4" width="5" height="24" fill="#fafafa"/>
+              <rect x="10" y="9" width="4" height="5" fill="#fafafa"/>
+              <rect x="14" y="14" width="4" height="5" fill="#ff2fd6"/>
+              <rect x="18" y="19" width="4" height="5" fill="#fafafa"/>
+              <rect x="22" y="4" width="5" height="24" fill="#fafafa"/>
+            </svg>
+          </a>
+          <nav class="nav-links">
+            <a href="/explore" class="nav-link">Sandboxes</a>
+            <a href="/pricing" class="nav-link active">Cloud &amp; Pricing</a>
+            <div class="nav-dropdown-wrapper">
+              <button class="nav-link nav-dropdown-trigger" aria-haspopup="true">
+                Tools
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="nav-dropdown">
+                <a href="/extension" class="dropdown-item">CLI &amp; Daemon</a>
+                <a href="/analyze" class="dropdown-item">Benchmarks</a>
+                <a href="/canvas" class="dropdown-item">Workflow Canvas</a>
+                <a href="/mcp" class="dropdown-item">MCP Server</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="header-right">
+          <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost">GitHub</a>
+          <a href="/login" class="btn btn--sm btn--solid">Log In</a>
+          <button class="menu-btn" aria-label="Open mobile menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="container" style="padding-top: 50px;">
+      <!-- H1 and sub-line (§5.5) -->
+      <section style="margin-bottom: 48px;">
+        <h1 class="hero-h1" style="font-size: 38px;">Hermetic agent compute for any repository.</h1>
+        <p class="hero-lede" style="max-width: 600px;">Run autonomous multi-agent pipelines with deterministic Docker isolation and reviewable Git delivery.</p>
+      </section>
+
+      <!-- H2 and Billing toggle -->
+      <section style="margin-bottom: 40px;">
+        <h2 class="section-h2-pixel-36">Membership.</h2>
+        <div class="pricing-toggle-wrap" role="radiogroup" aria-label="Billing frequency">
+          <button class="pricing-toggle-btn is-active" data-plan="monthly" role="radio" aria-checked="true">Pay monthly</button>
+          <button class="pricing-toggle-btn" data-plan="yearly" role="radio" aria-checked="false">
+            Pay yearly <span class="discount-badge">-17%</span>
+          </button>
+        </div>
+
+        <!-- 3 Tier Cards (§5.5) -->
+        <div class="pricing-tiers-grid">
+          <!-- Community (Open Source) -->
+          <div class="tier-card">
+            <h3 class="tier-name">Community</h3>
+            <div class="tier-tagline">Open-source Rust CLI &amp; local Docker container execution for individual developers.</div>
+            <div class="tier-price-row">
+              <span class="tier-price" id="price-basic">$0</span>
+              <span class="tier-period" id="period-basic">forever</span>
+            </div>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--full">Install CLI</a>
+            <ul class="tier-feature-list">
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Full open-source Rust CLI engine</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Unlimited local Docker container sandboxes</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>4-agent pipeline: Plan, Code, Test, Review</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Local MCP server for Claude and Cursor</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Community Discord and GitHub issues</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Cloud Developer -->
+          <div class="tier-card is-popular">
+            <div class="popular-badge">Most popular</div>
+            <h3 class="tier-name">Cloud Developer</h3>
+            <div class="tier-tagline">Managed cloud Docker sandboxes with zero local CPU overhead and GitHub bot integration.</div>
+            <div class="tier-price-row">
+              <span class="tier-price" id="price-individual">$19</span>
+              <span class="tier-period" id="period-individual">/mo</span>
+            </div>
+            <a href="/upgrade?plan=individual" class="btn btn--solid btn--full">Get Cloud Developer</a>
+            <div class="tier-footnote">Cancel anytime</div>
+            <ul class="tier-feature-list">
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Everything in Community</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>100 cloud sandbox CPU hours / month</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>GitHub Pull Request Bot automation</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Cloud MCP endpoint with persistent token</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Priority concurrent execution &amp; email support</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Team Infrastructure -->
+          <div class="tier-card">
+            <h3 class="tier-name">Team</h3>
+            <div class="tier-tagline">For engineering orgs requiring shared sandboxes, SOC2 security, and custom images.</div>
+            <div class="tier-price-row">
+              <span class="tier-price" id="price-team">$49</span>
+              <span class="tier-period" id="period-team">/seat/mo</span>
+            </div>
+            <a href="/upgrade?plan=team" class="btn btn--ghost btn--full">Get Team Plan</a>
+            <div class="tier-footnote">Per-seat pricing</div>
+            <ul class="tier-feature-list">
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Everything in Cloud Developer, for each seat</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Custom private Docker image registries</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Strict VPC egress firewall rules &amp; audit trails</span>
+              </li>
+              <li class="tier-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Dedicated Slack support &amp; custom SLA</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Storage & Compute Add-ons (§5.5) -->
+      <section style="margin: 80px 0;">
+        <h2 class="section-h2-pixel" style="font-size: 28px;">Need more sandbox compute?</h2>
+        <p class="feature-body" style="max-width: 640px;">
+          Add cloud sandbox compute hours to any plan. Keep your existing subscription and buy additional CPU capacity on-demand.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 24px;">
+          <div style="background: var(--card); border: 1px solid var(--border-02); padding: 24px;">
+            <div class="eyebrow">+50 SANDBOX HOURS</div>
+            <div style="font-family: var(--f-sans); font-size: 28px; color: var(--fg); margin: 8px 0;">$15 <span style="font-size: 14px; color: var(--faint);">/mo</span></div>
+            <div style="font-family: var(--f-mono); font-size: 12px; color: var(--muted); margin-bottom: 16px;">$0.30 per CPU hour</div>
+            <a href="/login" class="btn btn--ghost btn--full btn--sm">Add compute</a>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--border-02); padding: 24px;">
+            <div class="eyebrow">+200 SANDBOX HOURS</div>
+            <div style="font-family: var(--f-sans); font-size: 28px; color: var(--fg); margin: 8px 0;">$40 <span style="font-size: 14px; color: var(--faint);">/mo</span></div>
+            <div style="font-family: var(--f-mono); font-size: 12px; color: var(--muted); margin-bottom: 16px;">$0.20 per CPU hour</div>
+            <a href="/login" class="btn btn--ghost btn--full btn--sm">Add compute</a>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--border-02); padding: 24px;">
+            <div class="eyebrow">+500 SANDBOX HOURS</div>
+            <div style="font-family: var(--f-sans); font-size: 28px; color: var(--fg); margin: 8px 0;">$75 <span style="font-size: 14px; color: var(--faint);">/mo</span></div>
+            <div style="font-family: var(--f-mono); font-size: 12px; color: var(--muted); margin-bottom: 16px;">$0.15 per CPU hour</div>
+            <a href="/login" class="btn btn--ghost btn--full btn--sm">Add compute</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Compare table (§5.5) -->
+      <section id="compare" style="margin: 90px 0;">
+        <h2 class="section-h2-pixel" style="font-size: 28px;">Compare all features</h2>
+        <div class="table-scroll-container">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th style="width: 40%;">Feature</th>
+                <th style="width: 20%;">Community (OSS)</th>
+                <th style="width: 20%;">Cloud Developer</th>
+                <th style="width: 20%;">Team</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-category-row"><td colspan="4">EXECUTION &amp; ISOLATION</td></tr>
+              <tr>
+                <td>Local Docker container isolation</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td>Managed cloud microVM execution</td>
+                <td>—</td>
+                <td>100 CPU hrs/mo</td>
+                <td>Unlimited pooled</td>
+              </tr>
+              <tr>
+                <td>Strict cgroup RAM &amp; CPU constraints</td>
+                <td>✓</td>
+                <td>✓</td>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <td>Custom private Docker registries</td>
+                <td>—</td>
+                <td>—</td>
+                <td>✓</td>
+              </tr>
+
+              <tr class="table-category-row"><td colspan="4">AGENT PIPELINE &amp; VERIFICATION</td></tr>
+              <tr>
+                <td>4-stage agent pipeline (Plan, Code, Test, Review)</td>
+                <td>✓</td>
+                <td>✓</td>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <td>Automated test execution (Cargo, Vitest, Pytest)</td>
+                <td>✓</td>
+                <td>✓</td>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <td>AST security linters &amp; lifetime verifiers</td>
+                <td>✓</td>
+                <td>✓</td>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <td>Reviewable Git branch generation</td>
+                <td>✓</td>
+                <td>✓</td>
+                <td>✓</td>
+              </tr>
+
+              <tr class="table-category-row"><td colspan="4">INTEGRATIONS &amp; PROTOCOLS</td></tr>
+              <tr>
+                <td>Model Context Protocol (MCP) server</td>
+                <td>Local stdio</td>
+                <td>Cloud SSE</td>
+                <td>Cloud SSE + VPC</td>
+              </tr>
+              <tr>
+                <td>Claude, Cursor &amp; Windsurf integration</td>
+                <td>✓</td>
+                <td>✓</td>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <td>GitHub Pull Request automated bot</td>
+                <td>—</td>
+                <td>✓</td>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <td>Multi-agent visual workflow canvas</td>
+                <td>Local</td>
+                <td>Cloud shared</td>
+                <td>Cloud shared</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section style="margin: 90px 0;">
+        <h2 class="section-h2-pixel-36">Testimonials</h2>
+        <div class="testimonial-box" role="region" aria-label="Testimonial carousel">
+          <div class="testimonial-header">
+            <div class="testimonial-counter">01 / 04</div>
+            <div class="testimonial-nav">
+              <button class="nav-arrow-btn prev-quote-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+              <button class="nav-arrow-btn next-quote-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+            </div>
+          </div>
+          <div class="testimonial-quote-mark">”</div>
+          <div class="testimonial-quote">“Niki solved our biggest fear with AI coding: destructive hallucinations. Agents test and compile everything in isolated containers, delivering pristine Git PRs.”</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">D</div>
+            <div>
+              <div class="author-name">Diego</div>
+              <div class="author-role">VP of Engineering</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin: 90px 0;">
+        <h2 class="section-h2-pixel">Answers</h2>
+        <div class="faq-accordion">
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>Can I use the open-source CLI without a paid account?</span>
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer">
+              Yes, 100%. Niki's core CLI engine is completely open source under Apache-2.0 / MIT. You can run unlimited local Docker containers on your machine forever.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>How does billing work for Team seats?</span>
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer">
+              Team seats are billed per active developer who triggers cloud sandboxes or shares workflow canvases. Viewer-only stakeholders have free access.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>What happens if an agent produces failing tests?</span>
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer">
+              Niki will NEVER commit or create a Git branch if unit tests or AST linters fail. The agent rolls back the container layer and reports the failure logs.
+            </div>
+          </details>
+        </div>
+
+        <div style="margin-top: 32px;">
+          <a href="#compare" class="btn btn--ghost">Compare all plans ↑</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer (§3.2) -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-line-1">Niki © 2026 · Built with Rust for autonomous agent reliability and hermetic container execution.</div>
+          <div class="footer-nav">
+            <a href="/canvas">Workflow Canvas</a>
+            <a href="/mcp">MCP Server</a>
+            <a href="/extension">CLI &amp; Daemon</a>
+            <a href="/pricing">Cloud &amp; Pricing</a>
+            <a href="/changelog">Changelog</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="award-badge">RUST OSS</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

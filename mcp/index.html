@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>MCP Server · Niki</title>
+    <meta name="description" content="Connect Niki's isolated Docker execution sandboxes to Claude, Cursor and other AI tools through one MCP endpoint." />
+    <link rel="canonical" href="https://ais-dev-bfvvl67cqopwscdfaahwfk-259500406513.asia-southeast1.run.app/mcp" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Header (§3.1) -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="/" class="site-logo" aria-label="Niki Home">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="logo-icon">
+              <rect x="5" y="4" width="5" height="24" fill="#fafafa"/>
+              <rect x="10" y="9" width="4" height="5" fill="#fafafa"/>
+              <rect x="14" y="14" width="4" height="5" fill="#ff2fd6"/>
+              <rect x="18" y="19" width="4" height="5" fill="#fafafa"/>
+              <rect x="22" y="4" width="5" height="24" fill="#fafafa"/>
+            </svg>
+          </a>
+          <nav class="nav-links">
+            <a href="/explore" class="nav-link">Sandboxes</a>
+            <a href="/pricing" class="nav-link">Cloud &amp; Pricing</a>
+            <div class="nav-dropdown-wrapper">
+              <button class="nav-link nav-dropdown-trigger" aria-haspopup="true">
+                Tools
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="nav-dropdown">
+                <a href="/extension" class="dropdown-item">CLI &amp; Daemon</a>
+                <a href="/analyze" class="dropdown-item">Benchmarks</a>
+                <a href="/canvas" class="dropdown-item">Workflow Canvas</a>
+                <a href="/mcp" class="dropdown-item active">MCP Server</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="header-right">
+          <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost">GitHub</a>
+          <a href="/login" class="btn btn--sm btn--solid">Log In</a>
+          <button class="menu-btn" aria-label="Open mobile menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="container" style="padding-top: 50px;">
+      <!-- Hero (§5.10) -->
+      <section style="margin-bottom: 48px;">
+        <h1 class="hero-h1">Finally, plug isolated sandboxes into your AI tools.</h1>
+        <p class="hero-lede" style="max-width: 640px;">
+          Every Docker sandbox, test suite, and AST tool in Niki is one MCP connection away from Claude, Cursor, and Windsurf.
+        </p>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <a href="/pricing" class="btn btn--solid">Start here</a>
+          <a href="#connect" class="btn btn--ghost">Connect in 2 minutes</a>
+        </div>
+      </section>
+
+      <!-- Chat Hero Mock (§5.10) -->
+      <section style="background: var(--card); border: 1px solid var(--border-02); padding: 32px; max-width: 800px; margin-bottom: 80px;">
+        <div style="font-family: var(--f-mono); font-size: 14px;">
+          <div style="color: var(--muted); margin-bottom: 16px;">
+            <span style="color: var(--fg); font-weight: 500;">User (in Claude Desktop / Cursor):</span> Refactor token bucket rate limiter and run cargo test
+          </div>
+          <div style="background: var(--bg); border: 1px solid var(--border-01); border-left: 3px solid var(--accent); padding: 20px; line-height: 1.8;">
+            <div style="color: var(--faint); font-size: 12px; margin-bottom: 8px;">
+              Used niki · exec_sandbox(image="rust:1.80-alpine", command="cargo test --release")
+            </div>
+            <div style="color: var(--fg); font-size: 13px;">
+              1. Spawned isolated container niki-sb-8201 (cgroup: 2048MB, network: loopback)<br>
+              2. Agent Coder updated src/middleware/rate_limit.rs<br>
+              3. Agent Tester ran cargo test: 48 passed, 0 failed, 0 warnings<br>
+              4. Agent Reviewer verified ast-grep memory safety rules
+            </div>
+            <div style="color: #05f190; margin-top: 12px; font-size: 13px;">
+              ✓ Created reviewable Git branch: feature/rate-limiter. Ready to create Pull Request?
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 Feature Blocks (§5.10) -->
+      <section style="margin: 80px 0;">
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">Connect your autonomous coding to real execution.</h2>
+            <div class="feature-body">
+              <p>Claude and Cursor can write code, but letting them run commands on your raw laptop invites disaster. Niki gives them an isolated execution sandbox through MCP.</p>
+            </div>
+            <div style="display: flex; gap: 12px;">
+              <a href="#connect" class="btn btn--solid btn--sm">Connect in 2 minutes</a>
+              <a href="/pricing" class="btn btn--ghost btn--sm">Get the endpoint</a>
+            </div>
+          </div>
+          <div class="workspace-card" style="padding: 24px;">
+            <div class="eyebrow">LOCAL MCP STDIO COMMAND</div>
+            <div style="font-family: var(--f-mono); font-size: 13px; color: var(--fg); background: var(--bg); border: 1px solid var(--border-02); padding: 12px; margin: 12px 0;">
+              niki mcp-daemon --stdio
+            </div>
+            <button class="btn btn--ghost btn--sm btn-copy-action" data-copy="niki mcp-daemon --stdio">Copy Command</button>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">Ask for it the way you'd say it.</h2>
+            <div class="feature-body">
+              <p>Describe what you need: 'Run unit tests in an Alpine sandbox', 'Fix this memory leak and verify with Valgrind', 'Refactor the database queries and prove migrations work'.</p>
+              <p>Niki's 4-stage pipeline executes inside the container without touching host files.</p>
+            </div>
+          </div>
+          <div class="workspace-card" style="padding: 24px;">
+            <div style="font-family: var(--f-mono); font-size: 13px; color: var(--muted); line-height: 1.6;">
+              &gt; "Spawn a Rust container and run integration tests"<br>
+              &gt; "Generate a Git branch with passing tests for issue #82"
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">It tests the code, not just generating syntax.</h2>
+            <div class="feature-body">
+              <p>Most AI coding assistants stop after spitting out markdown code blocks. Niki compiles the code, executes test suites, and inspects exit codes.</p>
+              <p>If the compiler rejects a type or a test fails, the agent self-corrects inside the container before you ever see it.</p>
+            </div>
+          </div>
+          <div class="workspace-card" style="padding: 24px;">
+            <div class="eyebrow">DETERMINISTIC VERIFICATION</div>
+            <div style="font-size: 13px; color: var(--muted);">Real cargo test and vitest exit code validation passed back to the model context.</div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">Your Dockerfiles are the context.</h2>
+            <div class="feature-body">
+              <p>Niki uses your existing Dockerfiles, docker-compose configs, or pre-cached base images. The model tests against the exact runtime and OS packages your production deployment uses.</p>
+            </div>
+          </div>
+          <div class="workspace-card" style="padding: 24px;">
+            <div class="eyebrow">EXACT REPRODUCIBILITY</div>
+            <div style="font-family: var(--f-mono); font-size: 12px; color: var(--fg);">
+              ./Dockerfile.hermetic<br>
+              cgroup limits: 2048MB RAM · no network egress
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">Your test suites, straight into the build.</h2>
+            <div class="feature-body">
+              <p>Unit test passes, code coverage matrices, and static analysis outputs are returned inline to your AI tool.</p>
+            </div>
+          </div>
+          <div class="video-demo-frame">
+            <div class="video-demo-badge">MCP STREAM</div>
+            <div style="font-family: var(--f-mono); font-size: 13px; color: var(--faint);">[Claude Desktop Real-time Sandbox Execution]</div>
+            <button class="sound-toggle-btn" title="Turn sound on" aria-label="Toggle sound">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h2 class="section-h2-pixel">Ask for a Git branch. Get one.</h2>
+            <div class="feature-body">
+              <p>Reads your repository. Isolates execution. Emits a clean branch.</p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <span class="chip">READ REPO</span>
+              <span class="chip">ISOLATE DOCKER</span>
+              <span class="chip">EMIT BRANCH</span>
+            </div>
+          </div>
+          <div class="workspace-card" style="padding: 24px;">
+            <div style="font-family: var(--f-mono); font-size: 13px; color: var(--fg);">
+              niki.sandbox_spawn()<br>
+              niki.run_tests()<br>
+              niki.git_commit("feature/rate-limiter")
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- One URL. Any MCP client. (§5.10) -->
+      <section id="connect" style="background: var(--card); border: 1px solid var(--border-02); padding: 32px; margin: 80px 0;">
+        <h2 class="section-h2-pixel" style="font-size: 28px; margin-bottom: 24px;">One config. Any MCP client.</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 28px;">
+          <div>
+            <div class="eyebrow">STEP 01</div>
+            <h3 style="font-family: var(--f-sans); font-size: 16px; margin: 0 0 8px 0; color: var(--fg);">Install Niki CLI</h3>
+            <p style="font-size: 13px; color: var(--muted); margin: 0;">Run <code>cargo install niki-cli</code> or download binary.</p>
+          </div>
+          <div>
+            <div class="eyebrow">STEP 02</div>
+            <h3 style="font-family: var(--f-sans); font-size: 16px; margin: 0 0 8px 0; color: var(--fg);">Add to claude_desktop_config.json</h3>
+            <p style="font-size: 13px; color: var(--muted); margin: 0;">Point the mcpServers configuration to Niki's daemon.</p>
+          </div>
+          <div>
+            <div class="eyebrow">STEP 03</div>
+            <h3 style="font-family: var(--f-sans); font-size: 16px; margin: 0 0 8px 0; color: var(--fg);">Execute in Sandboxes</h3>
+            <p style="font-size: 13px; color: var(--muted); margin: 0;">Ask Claude or Cursor to build and test code in containers.</p>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-01); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div style="font-family: var(--f-mono); font-size: 13px; color: var(--muted);">View Claude &amp; Cursor configuration example</div>
+          <a href="/settings/account?tab=integrations" class="btn btn--solid btn--sm">View MCP Settings →</a>
+        </div>
+      </section>
+
+      <!-- Closing -->
+      <section style="margin: 100px 0 60px 0;">
+        <h2 class="section-h2-large" style="font-size: 38px;">Isolated execution, inside every AI tool you build in.</h2>
+        <a href="/pricing" class="btn btn--solid" style="margin-top: 20px;">Get Started with Niki MCP</a>
+      </section>
+    </main>
+
+    <!-- Footer (§3.2) -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-line-1">Niki © 2026 · Built with Rust for autonomous agent reliability and hermetic container execution.</div>
+          <div class="footer-nav">
+            <a href="/canvas">Workflow Canvas</a>
+            <a href="/mcp">MCP Server</a>
+            <a href="/extension">CLI &amp; Daemon</a>
+            <a href="/pricing">Cloud &amp; Pricing</a>
+            <a href="/changelog">Changelog</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="award-badge">RUST OSS</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

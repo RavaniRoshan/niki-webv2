@@ -1,0 +1,6 @@
+{
+  "name": "Niki",
+  "description": "Hermetic Multi-Agent Coding System: isolated AI agents independently plan, code, test, and review within Docker sandboxes, producing reviewable Git branches.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

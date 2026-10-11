@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1216 400" width="1216" height="400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b" />
+      <stop offset="50%" stop-color="#14061a" />
+      <stop offset="100%" stop-color="#06120e" />
+    </linearGradient>
+    <linearGradient id="magentaVioletGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff2fd6" stop-opacity="0.85" />
+      <stop offset="50%" stop-color="#a811da" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#7000ff" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="greenVioletGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#05f190" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#2a8b9e" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#ff2fd6" stop-opacity="0.8" />
+    </linearGradient>
+    <linearGradient id="neonGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff2fd6" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#09090b" stop-opacity="0" />
+    </linearGradient>
+    <filter id="blurFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40" />
+    </filter>
+  </defs>
+
+  <!-- Deep base -->
+  <rect width="1216" height="400" fill="url(#bgGrad)" />
+
+  <!-- Ambient glowing spheres -->
+  <circle cx="280" cy="180" r="160" fill="#ff2fd6" opacity="0.25" filter="url(#blurFilter)" />
+  <circle cx="880" cy="160" r="180" fill="#05f190" opacity="0.2" filter="url(#blurFilter)" />
+  <circle cx="600" cy="240" r="200" fill="#7000ff" opacity="0.3" filter="url(#blurFilter)" />
+
+  <!-- Perspective grid wireframe in background -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="200" x2="1216" y2="200" />
+    <line x1="0" y1="230" x2="1216" y2="230" />
+    <line x1="0" y1="270" x2="1216" y2="270" />
+    <line x1="0" y1="320" x2="1216" y2="320" />
+    <line x1="0" y1="380" x2="1216" y2="380" />
+    <!-- Radiating perspective lines -->
+    <line x1="608" y1="120" x2="0" y2="400" />
+    <line x1="608" y1="120" x2="180" y2="400" />
+    <line x1="608" y1="120" x2="360" y2="400" />
+    <line x1="608" y1="120" x2="520" y2="400" />
+    <line x1="608" y1="120" x2="696" y2="400" />
+    <line x1="608" y1="120" x2="856" y2="400" />
+    <line x1="608" y1="120" x2="1036" y2="400" />
+    <line x1="608" y1="120" x2="1216" y2="400" />
+  </g>
+
+  <!-- Layer 3: Distant violet mountains -->
+  <path d="M0,260 Q180,180 340,240 T720,200 T1040,230 T1216,210 L1216,400 L0,400 Z" fill="#1f0933" opacity="0.8" />
+  <path d="M0,260 Q180,180 340,240 T720,200 T1040,230 T1216,210" fill="none" stroke="#a811da" stroke-width="1.5" stroke-opacity="0.6" />
+
+  <!-- Layer 2: Mid-ground terrain with magenta glow -->
+  <path d="M0,290 C140,220 280,310 460,250 C620,200 800,290 980,230 C1100,200 1180,260 1216,280 L1216,400 L0,400 Z" fill="url(#magentaVioletGrad)" opacity="0.65" />
+  <path d="M0,290 C140,220 280,310 460,250 C620,200 800,290 980,230 C1100,200 1180,260 1216,280" fill="none" stroke="#ff2fd6" stroke-width="2" />
+
+  <!-- Layer 1: Foreground sharp contour ridges with emerald and neon accents -->
+  <path d="M0,340 C120,280 240,360 400,310 C580,260 720,350 900,290 C1060,240 1160,320 1216,330 L1216,400 L0,400 Z" fill="url(#greenVioletGrad)" opacity="0.8" />
+  <path d="M0,340 C120,280 240,360 400,310 C580,260 720,350 900,290 C1060,240 1160,320 1216,330" fill="none" stroke="#05f190" stroke-width="2.5" />
+
+  <!-- Geometric accent markers / pixel coordinate stars -->
+  <g fill="#fafafa" opacity="0.6">
+    <rect x="140" y="80" width="3" height="3" />
+    <rect x="320" y="60" width="3" height="3" />
+    <rect x="520" y="90" width="3" height="3" />
+    <rect x="740" y="50" width="4" height="4" fill="#05f190" />
+    <rect x="910" y="75" width="3" height="3" />
+    <rect x="1080" y="110" width="3" height="3" fill="#ff2fd6" />
+    <rect x="420" y="140" width="2" height="2" />
+    <rect x="830" y="130" width="2" height="2" />
+  </g>
+
+  <!-- Top hairline border -->
+  <line x1="0" y1="0" x2="1216" y2="0" stroke="#ffffff" stroke-opacity="0.08" />
+</svg>

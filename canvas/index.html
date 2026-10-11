@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Workflow Canvas · Niki</title>
+    <meta name="description" content="Visually wire Planner, Coder, Test Runner, and Reviewer nodes inside isolated Docker environments." />
+    <link rel="canonical" href="https://ais-dev-bfvvl67cqopwscdfaahwfk-259500406513.asia-southeast1.run.app/canvas" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Header (§3.1) -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="/" class="site-logo" aria-label="Niki Home">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="logo-icon">
+              <rect x="5" y="4" width="5" height="24" fill="#fafafa"/>
+              <rect x="10" y="9" width="4" height="5" fill="#fafafa"/>
+              <rect x="14" y="14" width="4" height="5" fill="#ff2fd6"/>
+              <rect x="18" y="19" width="4" height="5" fill="#fafafa"/>
+              <rect x="22" y="4" width="5" height="24" fill="#fafafa"/>
+            </svg>
+          </a>
+          <nav class="nav-links">
+            <a href="/explore" class="nav-link">Sandboxes</a>
+            <a href="/pricing" class="nav-link">Cloud &amp; Pricing</a>
+            <div class="nav-dropdown-wrapper">
+              <button class="nav-link nav-dropdown-trigger" aria-haspopup="true">
+                Tools
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="nav-dropdown">
+                <a href="/extension" class="dropdown-item">CLI &amp; Daemon</a>
+                <a href="/analyze" class="dropdown-item">Benchmarks</a>
+                <a href="/canvas" class="dropdown-item active">Workflow Canvas</a>
+                <a href="/mcp" class="dropdown-item">MCP Server</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="header-right">
+          <button class="cmd-k-pill" aria-label="Search">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span>⌘K</span>
+          </button>
+          <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost">GitHub</a>
+          <a href="/login" class="btn btn--sm btn--solid">Log In</a>
+          <button class="menu-btn" aria-label="Open mobile menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="container" style="padding-top: 50px;">
+      <!-- Hero (§5.9) -->
+      <section style="margin-bottom: 48px;">
+        <h1 class="hero-h1">Build multi-agent pipelines on an infinite canvas.</h1>
+        <p class="hero-lede" style="max-width: 600px;">
+          Coordinate your agent team visually: define task inputs, assign Docker runtime memory caps, inject test fixtures, and inspect the resulting Git PR branch.
+        </p>
+        <a href="/login" class="btn btn--solid">Create a pipeline</a>
+      </section>
+
+      <!-- Canvas Interactive Mockup (§5.9) -->
+      <section style="background: var(--card); border: 1px solid var(--border-02); min-height: 520px; position: relative; overflow: hidden; margin-bottom: 80px;">
+        <!-- Left Panel -->
+        <div style="position: absolute; top: 0; left: 0; bottom: 0; width: 220px; background: rgba(9,9,11,0.9); border-right: 1px solid var(--border-02); padding: 16px; z-index: 10;">
+          <div class="eyebrow" style="font-size: 11px;">AGENT TOOLBOX</div>
+          <div style="font-family: var(--f-mono); font-size: 12px; color: var(--fg); margin-bottom: 4px;">4 AGENT ROLES</div>
+          <div style="font-family: var(--f-mono); font-size: 11px; color: var(--muted); margin-bottom: 20px;">DOCKER RUNTIME ACTIVE</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="chip" style="justify-content: flex-start;">PLANNER NODE</div>
+            <div class="chip" style="justify-content: flex-start;">CODER NODE</div>
+            <div class="chip" style="justify-content: flex-start;">TEST HARNESS</div>
+            <div class="chip" style="justify-content: flex-start;">AST REVIEWER</div>
+            <div class="chip" style="justify-content: flex-start;">CGROUP LIMIT (2GB)</div>
+            <div class="chip" style="justify-content: flex-start;">GIT BRANCH EMITTER</div>
+          </div>
+        </div>
+
+        <!-- Canvas Infinite Plane with Nodes -->
+        <div style="margin-left: 220px; padding: 32px; min-height: 520px; background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 24px 24px; position: relative;">
+          <!-- Pipeline Frame -->
+          <div style="border: 1px dashed var(--border-03); padding: 20px; background: rgba(24,24,27,0.4); max-width: 600px; margin-bottom: 24px;">
+            <div style="font-family: var(--f-mono); font-size: 12px; color: var(--accent); margin-bottom: 16px;">
+              PIPELINE: HERMETIC_REFACTOR_PIPELINE
+            </div>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+              <div style="background: var(--card); border: 1px solid var(--border-02); padding: 12px; width: 160px;">
+                <div class="eyebrow" style="font-size: 10px;">PLANNER</div>
+                <div style="font-family: var(--f-mono); font-size: 12px; color: var(--fg);">AST Analyzer</div>
+                <div style="font-size: 11px; color: var(--faint); margin-top: 4px;">Inspects lifetimes</div>
+              </div>
+              <div style="background: var(--card); border: 1px solid var(--border-02); padding: 12px; width: 160px;">
+                <div class="eyebrow" style="font-size: 10px;">DOCKER CODER</div>
+                <div style="font-family: var(--f-mono); font-size: 12px; color: var(--fg);">rust:1.80-alpine</div>
+                <div style="font-size: 11px; color: var(--faint); margin-top: 4px;">cgroup 2GB cap</div>
+              </div>
+              <div style="background: var(--card); border: 1px solid var(--border-02); padding: 12px; width: 160px;">
+                <div class="eyebrow" style="font-size: 10px; color: var(--emerald);">TEST HARNESS</div>
+                <div style="font-family: var(--f-mono); font-size: 12px; color: var(--emerald);">cargo test</div>
+                <div style="font-size: 11px; color: var(--faint); margin-top: 4px;">48 passed · 0 failed</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Card -->
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <div style="background: #064e3b; border: 1px solid var(--emerald); padding: 14px; width: 280px; font-family: var(--f-mono); font-size: 12px; color: #a7f3d0;">
+              GIT BRANCH READY: feature/rate-limiter<br>
+              Pull Request draft generated with verified test logs.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 Core Pipeline Blocks (§5.9) -->
+      <section style="margin: 80px 0;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+          <div class="workspace-card" style="padding: 24px;">
+            <div class="eyebrow">STAGE 01</div>
+            <h3 style="font-family: var(--f-pixel); font-size: 18px; margin: 0 0 12px 0;">Planner Stage</h3>
+            <p style="font-size: 14px; color: var(--muted); margin: 0; line-height: 22px;">
+              The Planner agent parses ASTs, inspects types and call graphs, and defines the exact files and test assertions needed.
+            </p>
+          </div>
+
+          <div class="workspace-card" style="padding: 24px;">
+            <div class="eyebrow">STAGE 02</div>
+            <h3 style="font-family: var(--f-pixel); font-size: 18px; margin: 0 0 12px 0;">Hermetic Coder</h3>
+            <p style="font-size: 14px; color: var(--muted); margin: 0; line-height: 22px;">
+              The Coder executes strictly inside an isolated Docker container with zero access to your host machine or network.
+            </p>
+          </div>
+
+          <div class="workspace-card" style="padding: 24px;">
+            <div class="eyebrow">STAGE 03</div>
+            <h3 style="font-family: var(--f-pixel); font-size: 18px; margin: 0 0 12px 0;">Test Runner</h3>
+            <p style="font-size: 14px; color: var(--muted); margin: 0; line-height: 22px;">
+              The Test Runner agent executes real test suites (cargo test, vitest, pytest). If any test fails, changes are reverted automatically.
+            </p>
+          </div>
+
+          <div class="workspace-card" style="padding: 24px;">
+            <div class="eyebrow">STAGE 04</div>
+            <h3 style="font-family: var(--f-pixel); font-size: 18px; margin: 0 0 12px 0;">Reviewer &amp; Git Output</h3>
+            <p style="font-size: 14px; color: var(--muted); margin: 0; line-height: 22px;">
+              The Reviewer performs AST security checks and commits only verified code to a clean Git branch for human pull request review.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Connect your workflow to MCP (§5.9) -->
+      <section style="margin: 90px 0;">
+        <h2 class="section-h2-pixel" style="font-size: 30px;">Control your pipeline via MCP.</h2>
+        <p class="feature-body" style="max-width: 680px;">
+          Expose your multi-agent pipelines to Claude Desktop, Cursor, or your external LLM framework using standard Model Context Protocol tools.
+        </p>
+
+        <!-- MCP Tool List -->
+        <div style="background: var(--card); border: 1px solid var(--border-02); padding: 20px; display: flex; flex-direction: column; gap: 16px; margin: 28px 0;">
+          <div style="border-bottom: 1px solid var(--border-01); padding-bottom: 12px;">
+            <span style="font-family: var(--f-mono); font-size: 14px; color: var(--accent);">pipeline_list</span>
+            <span style="font-family: var(--f-mono); font-size: 13px; color: var(--fg); margin-left: 12px;">Find the pipeline.</span>
+            <div style="font-size: 13px; color: var(--muted); margin-top: 4px;">Inspect active multi-agent workflows and container status in your workspace.</div>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border-01); padding-bottom: 12px;">
+            <span style="font-family: var(--f-mono); font-size: 14px; color: var(--accent);">pipeline_get</span>
+            <span style="font-family: var(--f-mono); font-size: 13px; color: var(--fg); margin-left: 12px;">Understand the whole pipeline.</span>
+            <div style="font-size: 13px; color: var(--muted); margin-top: 4px;">Retrieve agent roles, Docker base images, cgroup limits, and test commands.</div>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border-01); padding-bottom: 12px;">
+            <span style="font-family: var(--f-mono); font-size: 14px; color: var(--accent);">pipeline_exec_sandbox</span>
+            <span style="font-family: var(--f-mono); font-size: 13px; color: var(--fg); margin-left: 12px;">Execute in Docker sandbox.</span>
+            <div style="font-size: 13px; color: var(--muted); margin-top: 4px;">Spawns ephemeral container, executes agent code, runs tests, and streams logs.</div>
+          </div>
+
+          <div>
+            <span style="font-family: var(--f-mono); font-size: 14px; color: var(--accent);">pipeline_create_branch</span>
+            <span style="font-family: var(--f-mono); font-size: 13px; color: var(--fg); margin-left: 12px;">Emit reviewable Git branch.</span>
+            <div style="font-size: 13px; color: var(--muted); margin-top: 4px;">Creates Git branch with verified diffs only after test suites pass.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deliverable Link (§5.9) -->
+      <section style="margin: 80px 0;">
+        <h2 class="section-h2-large" style="font-size: 36px;">One Git branch. Reviewable and verifiable.</h2>
+        <p class="feature-body" style="max-width: 600px;">
+          Niki delivers pull requests and branches you can inspect, test, and merge with total peace of mind.
+        </p>
+        <a href="/mcp" class="btn btn--solid">Learn more about MCP</a>
+      </section>
+    </main>
+
+    <!-- Footer (§3.2) -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-line-1">Niki © 2026 · Built with Rust for autonomous agent reliability and hermetic container execution.</div>
+          <div class="footer-nav">
+            <a href="/canvas">Workflow Canvas</a>
+            <a href="/mcp">MCP Server</a>
+            <a href="/extension">CLI &amp; Daemon</a>
+            <a href="/pricing">Cloud &amp; Pricing</a>
+            <a href="/changelog">Changelog</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+            <a href="https://github.com/RavaniRoshan/niki" target="_blank" rel="noopener noreferrer" class="award-badge">RUST OSS</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
