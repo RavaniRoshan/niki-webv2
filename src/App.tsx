@@ -1,8 +1,5 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+import DitheredFooterDemo from "@/components/ui/demo";
 
 export default function App() {
-  return <div></div>;
+  return <DitheredFooterDemo />;
 }

@@ -1,6 +1,8 @@
 import path from 'path';
 import { defineConfig, Plugin } from 'vite';
 import fs from 'fs';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 function nikiMpaPlugin(): Plugin {
   return {
@@ -73,7 +75,7 @@ function nikiMpaPlugin(): Plugin {
 
 export default defineConfig(() => {
   return {
-    plugins: [nikiMpaPlugin()],
+    plugins: [react(), tailwindcss(), nikiMpaPlugin()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

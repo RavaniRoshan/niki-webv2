@@ -298,28 +298,36 @@ function initTestimonials() {
       quote: 'Niki solved our biggest fear with AI coding: destructive hallucinations. Agents test and compile everything in isolated containers, delivering pristine Git PRs.',
       name: 'Diego',
       role: 'VP of Engineering',
-      initial: 'D'
+      initial: 'D',
+      seed: 'Diego',
+      variant: 'glitch'
     },
     {
       counter: '02 / 04',
       quote: 'We run Niki in our CI pipelines for automated bug fixes. It plans, codes in Rust, runs cargo test, and only cuts a branch when all suites pass 100%.',
       name: 'Pritam',
       role: 'Staff Infrastructure Engineer',
-      initial: 'P'
+      initial: 'P',
+      seed: '@pritamsen-infra',
+      variant: 'bot'
     },
     {
       counter: '03 / 04',
-      quote: 'Having the multi-agent system written in Rust makes container orchestration lightning fast. Startup time is under 15ms per sandbox.',
-      name: 'Razi',
-      role: 'AI Systems Architect',
-      initial: 'R'
+      quote: 'The Rust compiler and hermetic cgroups make Niki 10x faster and safer than generic Python wrappers. Startup time is under 15ms per sandbox.',
+      name: 'Roshan Ravani',
+      role: 'Creator of Niki · @RavaniRoshan',
+      initial: 'R',
+      seed: '@RavaniRoshan',
+      variant: 'singularity'
     },
     {
       counter: '04 / 04',
       quote: 'Niki is the first agent system I actually trust with production repositories. Zero host access, pure hermetic Docker execution, reviewable Git diffs.',
       name: 'Sebastian',
       role: 'Principal DevOps Lead',
-      initial: 'S'
+      initial: 'S',
+      seed: 'task-sandbox-cgroup-88',
+      variant: 'invader'
     }
   ];
 
@@ -339,9 +347,13 @@ function initTestimonials() {
     const item = quotes[idx];
     if (counterEl) counterEl.textContent = item.counter;
     if (quoteEl) quoteEl.textContent = `“${item.quote}”`;
-    if (avatarEl) avatarEl.textContent = item.initial;
     if (nameEl) nameEl.textContent = item.name;
     if (roleEl) roleEl.textContent = item.role;
+    if (avatarEl) {
+      avatarEl.setAttribute('data-seed', item.seed);
+      avatarEl.setAttribute('data-variant', item.variant);
+      avatarEl.dispatchEvent(new CustomEvent('update-avatar', { detail: item }));
+    }
   }
 
   function nextQuote() {
@@ -481,23 +493,9 @@ function initModals() {
   setupModal(noteModal, openNoteBtns);
 }
 
-// 9. Video Demo Player & Sound Toggles
+// 9. Video Demo Player
 function initVideoDemos() {
-  const soundBtns = document.querySelectorAll('.sound-toggle-btn');
   const videoModal = document.getElementById('videoModal');
-
-  soundBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isMuted = btn.getAttribute('data-muted') !== 'false';
-      btn.setAttribute('data-muted', isMuted ? 'false' : 'true');
-      btn.setAttribute('title', isMuted ? 'Turn sound off' : 'Turn sound on');
-      btn.innerHTML = isMuted
-        ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>'
-        : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>';
-      showToast(isMuted ? 'Terminal audio enabled' : 'Terminal audio muted');
-    });
-  });
 
   if (videoModal) {
     const triggers = document.querySelectorAll('.btn-watch-video');
